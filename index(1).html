@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moredou Technology Inc. | Next Generation Trading Card Platform</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Segoe UI,Roboto,Arial,sans-serif;
+    background:#f5f7fb;
+    color:#333;
+    line-height:1.6;
+}
+
+header{
+    background:linear-gradient(135deg,#0f172a,#1d4ed8);
+    color:white;
+    padding:80px 20px;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+}
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:60px;
+}
+
+.logo{
+    font-size:30px;
+    font-weight:bold;
+    letter-spacing:2px;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:30px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-weight:500;
+}
+
+.hero{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:40px;
+    align-items:center;
+}
+
+.hero h1{
+    font-size:50px;
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:20px;
+    opacity:.95;
+}
+
+.hero-card{
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(8px);
+    padding:30px;
+    border-radius:16px;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:30px;
+    background:#38bdf8;
+    color:white;
+    padding:14px 28px;
+    text-decoration:none;
+    border-radius:8px;
+    transition:.3s;
+}
+
+.btn:hover{
+    background:#0ea5e9;
+}
+
+section{
+    padding:80px 20px;
+}
+
+h2{
+    font-size:38px;
+    color:#0f172a;
+    margin-bottom:20px;
+}
+
+.section-intro{
+    max-width:850px;
+    margin-bottom:40px;
+    color:#555;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:white;
+    padding:30px;
+    border-radius:14px;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+}
+
+.card h3{
+    color:#1d4ed8;
+    margin-bottom:15px;
+}
+
+.list{
+    columns:2;
+}
+
+.list li{
+    margin-bottom:10px;
+}
+
+.timeline{
+    display:grid;
+    gap:25px;
+}
+
+.step{
+    background:white;
+    padding:25px;
+    border-left:6px solid #2563eb;
+    border-radius:8px;
+    box-shadow:0 4px 12px rgba(0,0,0,.05);
+}
+
+.tech-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+    gap:15px;
+}
+
+.tech{
+    background:white;
+    padding:18px;
+    text-align:center;
+    border-radius:10px;
+    font-weight:600;
+    box-shadow:0 4px 10px rgba(0,0,0,.05);
+}
+
+footer{
+    background:#0f172a;
+    color:white;
+    padding:60px 20px;
+}
+
+.contact{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px;
+}
+
+.contact h3{
+    margin-bottom:15px;
+}
+
+.contact p{
+    margin-bottom:8px;
+}
+
+.small{
+    margin-top:40px;
+    text-align:center;
+    color:#cbd5e1;
+    font-size:14px;
+}
+
+@media(max-width:700px){
+
+.hero h1{
+font-size:38px;
+}
+
+nav{
+flex-direction:column;
+gap:20px;
+}
+
+nav ul{
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.list{
+columns:1;
+}
+
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="container">
+
+<nav>
+
+<div class="logo">Moredou</div>
+
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#platform">Platform</a></li>
+<li><a href="#technology">Technology</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+
+</nav>
+
+<div class="hero">
+
+<div>
+
+<h1>The Future of Trading Card Collecting</h1>
+
+<p>
+Moredou Technology Inc. is building the next-generation platform for collectors,
+dealers, investors, and hobby communities by combining portfolio management,
+market intelligence, artificial intelligence, and marketplace infrastructure
+into one unified ecosystem.
+</p>
+
+<a class="btn" href="#about">Learn More</a>
+
+</div>
+
+<div class="hero-card">
+
+<h2 style="color:white;">Our Mission</h2>
+
+<p>
+Simplify collecting, improve market transparency,
+and build the technology infrastructure that powers the future of the
+global trading card ecosystem.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</header>
+
+<section id="about">
+
+<div class="container">
+
+<h2>Company Overview</h2>
+
+<p class="section-intro">
+
+Today's collecting experience is fragmented across multiple applications,
+pricing tools, marketplaces, portfolio trackers, and inventory systems.
+Moredou Technology is developing a single cloud-native platform that brings
+everything together in one intelligent experience.
+
+</p>
+
+<div class="grid">
+
+<div class="card">
+<h3>Unified Collection Management</h3>
+<p>
+Organize raw cards, graded cards, sealed products, and monitor your collection's value from one dashboard.
+</p>
+</div>
+
+<div class="card">
+<h3>Market Intelligence</h3>
+<p>
+Historical pricing, portfolio analytics, trend analysis, and AI-powered insights help collectors make informed decisions.
+</p>
+</div>
+
+<div class="card">
+<h3>Trading Infrastructure</h3>
+<p>
+Future marketplace capabilities will enable secure buying, selling, and trading between collectors and professional dealers.
+</p>
+</div>
+
+<div class="card">
+<h3>Artificial Intelligence</h3>
+<p>
+Machine learning models classify inventory, discover opportunities, detect trends, and deliver personalized recommendations.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="container">
+
+<h2>Market Opportunity</h2>
+
+<p class="section-intro">
+
+Millions of collectors actively buy, sell, grade, and manage valuable trading cards every year.
+Moredou is focused on modernizing this growing industry through an integrated technology platform.
+
+</p>
+
+<ul class="list">
+
+<li>Pokémon</li>
+<li>Sports Cards</li>
+<li>One Piece</li>
+<li>Magic: The Gathering</li>
+<li>Yu-Gi-Oh!</li>
+<li>Graded Collectibles</li>
+<li>Memorabilia</li>
+
+</ul>
+
+</div>
+
+</section>
+
+<section id="platform">
+
+<div class="container">
+
+<h2>Platform Roadmap</h2>
+
+<div class="timeline">
+
+<div class="step">
+<h3>Collection Management</h3>
+<p>Track inventory, portfolio value, grading status, and collection performance.</p>
+</div>
+
+<div class="step">
+<h3>Market Intelligence</h3>
+<p>Historical pricing, analytics dashboards, AI-driven market signals, and trend monitoring.</p>
+</div>
+
+<div class="step">
+<h3>Marketplace</h3>
+<p>Secure buying, selling, and trading between collectors, dealers, and investors.</p>
+</div>
+
+<div class="step">
+<h3>Artificial Intelligence</h3>
+<p>Inventory recognition, pricing analysis, opportunity detection, automation, and personalized recommendations.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="container">
+
+<h2>Revenue Model</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Marketplace Fees</h3>
+<p>Transaction fees from secure trades and marketplace activity.</p>
+</div>
+
+<div class="card">
+<h3>Premium Memberships</h3>
+<p>Subscription plans with advanced portfolio and analytics features.</p>
+</div>
+
+<div class="card">
+<h3>Dealer Solutions</h3>
+<p>Professional software for high-volume sellers and businesses.</p>
+</div>
+
+<div class="card">
+<h3>Data & APIs</h3>
+<p>Market intelligence products, analytics services, and platform integrations.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="technology">
+
+<div class="container">
+
+<h2>Technology Platform</h2>
+
+<p class="section-intro">
+
+Moredou is built on a scalable, cloud-native architecture designed to support
+collectors and marketplace participants worldwide.
+
+</p>
+
+<div class="tech-grid">
+
+<div class="tech">Java</div>
+<div class="tech">Spring Boot</div>
+<div class="tech">Python</div>
+<div class="tech">React</div>
+<div class="tech">REST APIs</div>
+<div class="tech">Microservices</div>
+<div class="tech">PostgreSQL</div>
+<div class="tech">Git</div>
+<div class="tech">CI/CD</div>
+<div class="tech">AWS Cloud</div>
+<div class="tech">Artificial Intelligence</div>
+<div class="tech">Data Analytics</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="container">
+
+<h2>Our Vision</h2>
+
+<p class="section-intro">
+
+Moredou Technology Inc. aims to become the operating system for the global
+trading card collecting community.
+
+By combining portfolio management, pricing intelligence, artificial
+intelligence, and marketplace infrastructure into one platform, we seek
+to build the world's most trusted destination for collecting,
+managing, buying, and selling trading cards.
+
+</p>
+
+</div>
+
+</section>
+
+<footer id="contact">
+
+<div class="container">
+
+<div class="contact">
+
+<div>
+
+<h3>Moredou Technology Inc.</h3>
+
+<p>A New York Corporation</p>
+
+<p>117 Kingfisher Road</p>
+
+<p>Levittown, NY 11756</p>
+
+</div>
+
+<div>
+
+<h3>Contact</h3>
+
+<p>Email: info@Moredouus.com</p>
+
+<p>Website: Moredouus.com</p>
+
+<p>Phone: 999-999-9999</p>
+
+</div>
+
+<div>
+
+<h3>Industry Focus</h3>
+
+<p>Marketplace Technology</p>
+<p>Trading Card Platforms</p>
+<p>Artificial Intelligence Solutions</p>
+<p>Data Analytics</p>
+<p>Software Development</p>
+
+</div>
+
+</div>
+
+<div class="small">
+© 2024 Moredou Technology Inc. All Rights Reserved.
+</div>
+
+</div>
+
+</footer>
+
+</body>
+</html>
