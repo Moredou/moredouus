@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MoredouUS | Trading Card Marketplace</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background-color: #f5f7fb;
+      color: #111111;
+      line-height: 1.5;
+    }
+
+    /* ----- ROOT VARIABLES ----- */
+    :root {
+      --primary-green: #4CAF50;
+      --dark-green: #2e7d32;
+      --text-dark: #111111;
+      --text-light: #555555;
+      --bg-gray: #f4f4f4;
+      --border-color: #e0e0e0;
+      --card-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    /* ----- HEADER / NAVIGATION ----- */
+    header {
+      background-color: #ffffff;
+      border-bottom: 2px solid var(--primary-green);
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      flex-shrink: 0;
+      gap: 14px;
+    }
+
+    .logo-image {
+      height: 48px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+
+    .logo-main {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: #000000;
+      line-height: 1;
+    }
+
+    .logo-main span {
+      color: var(--primary-green);
+    }
+
+    .logo-sub {
+      font-size: 8px;
+      font-weight: bold;
+      color: var(--text-light);
+      letter-spacing: 1.5px;
+      margin-top: 2px;
+      text-transform: uppercase;
+      border-top: 1px solid var(--primary-green);
+      border-bottom: 1px solid var(--primary-green);
+      padding: 1px 0;
+      text-align: center;
+    }
+
+    .search-container {
+      flex: 1 1 300px;
+      max-width: 600px;
+      position: relative;
+      min-width: 180px;
+    }
+
+    .search-container input {
+      width: 100%;
+      padding: 12px 20px;
+      border: 1px solid var(--border-color);
+      border-radius: 25px;
+      font-size: 14px;
+      outline: none;
+      background: #fff;
+      transition: border 0.2s;
+    }
+
+    .search-container input:focus {
+      border-color: var(--primary-green);
+    }
+
+    .search-container button {
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      background-color: var(--primary-green);
+      color: white;
+      border: none;
+      padding: 7px 18px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.2s;
+    }
+
+    .search-container button:hover {
+      background-color: var(--dark-green);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 10px 20px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--text-dark);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary-green);
+    }
+
+    /* ----- SUB-NAV ----- */
+    .sub-nav {
+      background-color: var(--bg-gray);
+      border-bottom: 1px solid var(--border-color);
+      padding: 10px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px 25px;
+    }
+
+    .sub-nav a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .sub-nav a:hover {
+      color: var(--primary-green);
+    }
+
+    /* ----- HERO ----- */
+    .hero-banner {
+      background: linear-gradient(135deg, #0f172a, #1d4ed8);
+      color: white;
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    .hero-banner h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .hero-banner p {
+      font-size: 18px;
+      opacity: 0.95;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* ----- CONTAINER & GRID ----- */
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .section-title {
+      font-size: 22px;
+      font-weight: bold;
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 8px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .section-title a {
+      font-size: 14px;
+      color: var(--primary-green);
+      text-decoration: none;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .product-card {
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 15px;
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+      background: #fff;
+      box-shadow: var(--card-shadow);
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+    }
+
+    .card-img {
+      width: 100%;
+      height: 200px;
+      object-fit: contain;
+      background: #f0f2f5;
+      border-radius: 6px;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .product-game {
+      font-size: 11px;
+      text-transform: uppercase;
+      color: var(--primary-green);
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .product-title {
+      font-size: 15px;
+      font-weight: bold;
+      margin: 0 0 8px 0;
+      height: 40px;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+
+    .product-price {
+      font-size: 18px;
+      color: #d32f2f;
+      font-weight: bold;
+    }
+
+    .market-label {
+      font-size: 11px;
+      color: var(--text-light);
+      margin-top: 2px;
+    }
+
+    /* ----- COMPANY OVERVIEW ----- */
+    .company-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 25px;
+      margin: 30px 0 40px;
+    }
+
+    .company-card {
+      background: white;
+      padding: 25px;
+      border-radius: 14px;
+      box-shadow: var(--card-shadow);
+      transition: 0.2s;
+      border-top: 4px solid var(--primary-green);
+    }
+
+    .company-card h3 {
+      color: #1d4ed8;
+      margin-bottom: 12px;
+      font-size: 20px;
+    }
+
+    /* ----- TECH STACK ----- */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px;
+      margin: 25px 0;
+    }
+
+    .tech-item {
+      background: white;
+      padding: 14px 8px;
+      text-align: center;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 14px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+      border: 1px solid var(--border-color);
+      color: #0f172a;
+    }
+
+    /* ----- FOOTER ----- */
+    footer {
+      background-color: #111111;
+      color: #ffffff;
+      padding: 40px 20px;
+      margin-top: 60px;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 30px;
+    }
+
+    .footer-col h4 {
+      color: var(--primary-green);
+      margin: 0 0 15px 0;
+      text-transform: uppercase;
+      font-size: 14px;
+      letter-spacing: 1px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-col ul li a {
+      color: #bbb;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .footer-col ul li a:hover {
+      color: #fff;
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 30px auto 0;
+      padding-top: 20px;
+      border-top: 1px solid #333;
+      text-align: center;
+      color: #777;
+      font-size: 12px;
+    }
+
+    /* ----- RESPONSIVE ----- */
+    @media (max-width: 700px) {
+      header { flex-direction: column; align-items: stretch; }
+      .search-container { max-width: 100%; }
+      .nav-links { justify-content: center; }
+      .hero-banner h1 { font-size: 28px; }
+      .product-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="#" class="logo-container">
+      <img src="logo.png" alt="Moredou Logo" class="logo-image">
+      <div class="logo-text">
+        <div class="logo-main">M<span>O</span>REDOU</div>
+        <div class="logo-sub">Technology Inc.</div>
+      </div>
+    </a>
+
+    <div class="search-container">
+      <input type="text" placeholder="Search for cards, sets, or sealed product...">
+      <button type="submit">Search</button>
+    </div>
+
+    <nav class="nav-links">
+      <a href="#">Sign In</a>
+      <a href="#">Cart (0)</a>
+    </nav>
+  </header>
+
+  <!-- SUB-NAV -->
+  <div class="sub-nav">
+    <a href="#">Magic: The Gathering</a>
+    <a href="#">Pokémon</a>
+    <a href="#">Yu-Gi-Oh!</a>
+    <a href="#">Lorcana</a>
+    <a href="#">Star Wars: Unlimited</a>
+    <a href="#">One Piece</a>
+    <a href="#">Sealed Products</a>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero-banner">
+    <h1>The Ultimate Trading Card Marketplace</h1>
+    <p>Buy directly from hobby shops and independent sellers across MoredouUS.</p>
+  </div>
+
+  <!-- MAIN CONTAINER -->
+  <div class="container">
+
+    <!-- TRENDING PRODUCTS -->
+    <div class="section-title">
+      <span>🔥 Trending Now</span>
+      <a href="#">View all →</a>
+    </div>
+
+    <div class="product-grid">
+      <div class="product-card">
+        <img class="card-img" src="223073_in_1000x1000.jpg" alt="Charizard VMAX">
+        <div class="product-game">Pokémon</div>
+        <div class="product-title">Charizard VMAX - Champion's Path</div>
+        <div class="product-price">$129.99</div>
+        <div class="market-label">Market Price</div>
+      </div>
+      <div class="product-card">
+        <img class="card-img" src="543624_in_1000x1000.jpg" alt="Monkey D. Luffy">
+        <div class="product-game">One Piece</div>
+        <div class="product-title">Monkey D. Luffy - OP-01</div>
+        <div class="product-price">$89.50</div>
+        <div class="market-label">Market Price</div>
+      </div>
+      <div class="product-card">
+        <img class="card-img" src="8989_in_1000x1000.jpg" alt="Black Lotus">
+        <div class="product-game">Magic</div>
+        <div class="product-title">Black Lotus - Unlimited Edition</div>
+        <div class="product-price">$5,200.00</div>
+        <div class="market-label">Market Price</div>
+      </div>
+      <div class="product-card">
+        <img class="card-img" src="579527_in_1000x1000.jpg" alt="Dark Magician">
+        <div class="product-game">Yu-Gi-Oh!</div>
+        <div class="product-title">Dark Magician - 25th Anniversary</div>
+        <div class="product-price">$34.99</div>
+        <div class="market-label">Market Price</div>
+      </div>
+      <div class="product-card">
+        <img class="card-img" src="235019_in_1000x1000.jpg" alt="Naruto Uzumaki">
+        <div class="product-game">Naruto</div>
+        <div class="product-title">Naruto Uzumaki - Bandai CCG</div>
+        <div class="product-price">$45.00</div>
+        <div class="market-label">Market Price</div>
+      </div>
+    </div>
+
+    <!-- COMPANY OVERVIEW -->
+    <div class="section-title">
+      <span>Moredou Technology Inc.</span>
+      <a href="#">About us</a>
+    </div>
+    <p style="margin-bottom: 20px; color: #444; max-width: 800px;">
+      Today's collecting experience is fragmented across multiple applications, pricing tools, marketplaces, and inventory systems.
+      Moredou Technology is developing a single cloud-native platform that brings everything together in one intelligent experience.
+    </p>
+    <div class="company-grid">
+      <div class="company-card">
+        <h3>Unified Collection</h3>
+        <p>Organize raw cards, graded cards, sealed products, and monitor your collection's value from one dashboard.</p>
+      </div>
+      <div class="company-card">
+        <h3>Market Intelligence</h3>
+        <p>Historical pricing, portfolio analytics, trend analysis, and AI-powered insights help collectors make informed decisions.</p>
+      </div>
+      <div class="company-card">
+        <h3>Trading Infrastructure</h3>
+        <p>Secure buying, selling, and trading between collectors and professional dealers.</p>
+      </div>
+      <div class="company-card">
+        <h3>Artificial Intelligence</h3>
+        <p>Machine learning models classify inventory, discover opportunities, and deliver personalized recommendations.</p>
+      </div>
+    </div>
+
+    <!-- PLATFORM ROADMAP -->
+    <div class="section-title">
+      <span>Platform Roadmap</span>
+    </div>
+    <div style="display: grid; gap: 20px; margin-bottom: 40px;">
+      <div style="background: white; padding: 20px; border-left: 6px solid #2563eb; border-radius: 8px; box-shadow: var(--card-shadow);">
+        <h3 style="color: #1d4ed8;">Collection Management</h3>
+        <p>Track inventory, portfolio value, grading status, and collection performance.</p>
+      </div>
+      <div style="background: white; padding: 20px; border-left: 6px solid #2563eb; border-radius: 8px; box-shadow: var(--card-shadow);">
+        <h3 style="color: #1d4ed8;">Market Intelligence</h3>
+        <p>Historical pricing, analytics dashboards, AI-driven market signals, and trend monitoring.</p>
+      </div>
+      <div style="background: white; padding: 20px; border-left: 6px solid #2563eb; border-radius: 8px; box-shadow: var(--card-shadow);">
+        <h3 style="color: #1d4ed8;">Marketplace</h3>
+        <p>Secure buying, selling, and trading between collectors, dealers, and investors.</p>
+      </div>
+      <div style="background: white; padding: 20px; border-left: 6px solid #2563eb; border-radius: 8px; box-shadow: var(--card-shadow);">
+        <h3 style="color: #1d4ed8;">Artificial Intelligence</h3>
+        <p>Inventory recognition, pricing analysis, opportunity detection, automation, and personalized recommendations.</p>
+      </div>
+    </div>
+
+    <!-- TECHNOLOGY STACK -->
+    <div class="section-title">
+      <span>Technology Platform</span>
+    </div>
+    <p style="margin-bottom: 20px; color: #444;">Moredou is built on a scalable, cloud-native architecture designed to support collectors worldwide.</p>
+    <div class="tech-grid">
+      <span class="tech-item">Java</span>
+      <span class="tech-item">Spring Boot</span>
+      <span class="tech-item">Python</span>
+      <span class="tech-item">React</span>
+      <span class="tech-item">REST APIs</span>
+      <span class="tech-item">Microservices</span>
+      <span class="tech-item">PostgreSQL</span>
+      <span class="tech-item">Git</span>
+      <span class="tech-item">CI/CD</span>
+      <span class="tech-item">AWS Cloud</span>
+      <span class="tech-item">AI / ML</span>
+      <span class="tech-item">Data Analytics</span>
+    </div>
+
+    <!-- VISION -->
+    <div style="margin-top: 40px; background: #f0f4ff; padding: 30px; border-radius: 16px;">
+      <h2 style="color: #0f172a; font-size: 28px;">Our Vision</h2>
+      <p style="max-width: 800px; color: #1e293b;">
+        Moredou Technology Inc. aims to become the operating system for the global trading card collecting community.
+        By combining portfolio management, pricing intelligence, artificial intelligence, and marketplace infrastructure into one platform,
+        we seek to build the world's most trusted destination for collecting, managing, buying, and selling trading cards.
+      </p>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h4>Moredou Technology</h4>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Marketplace</h4>
+        <ul>
+          <li><a href="#">Buy</a></li>
+          <li><a href="#">Sell</a></li>
+          <li><a href="#">Trade</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Community</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#">careers@Moredouus.com</a></li>
+          <li><a href="#">(516) 974-7088</a></li>
+          <li><a href="#">117 Kingfisher Road, Levittown, NY 11756</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Moredou Technology Inc. All Rights Reserved.
+    </div>
+  </footer>
+
+</body>
+</html>
